@@ -15,10 +15,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import org.checkerframework.common.returnsreceiver.qual.This;
+
 public class Register extends AppCompatActivity
 {
     private FirebaseAuth mAuth= FirebaseAuth.getInstance();
-    User user;
+    User user=new User();
+    String mail="";
+    String password="";
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -28,20 +32,21 @@ public class Register extends AppCompatActivity
     public void signIn(View view)
     {
         EditText etEmail = findViewById(R.id.editTextTextEmailAddress);
-        if(TextUtils.isEmpty(etEmail.getText()))
+        mail = etEmail.getText().toString();
+        EditText etPassword = findViewById(R.id.editTextTextPassword);
+        password = etPassword.getText().toString();
+        if(TextUtils.isEmpty(etEmail.getText()) || TextUtils.isEmpty(etPassword.getText().toString()))
         {
             return;
         }
-        String mail = etEmail.getText().toString();
-        EditText etPassword = findViewById(R.id.editTextTextPassword);
-        String password = etPassword.getText().toString();
         mAuth.createUserWithEmailAndPassword(mail, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 // check if success or fail
                 if(task.isSuccessful())
                 {
-                    gotoGameActivity();
+                   gotoGameActivity();
+
                 }
                 else
                 {
@@ -56,7 +61,10 @@ public class Register extends AppCompatActivity
 
     private void gotoGameActivity()
     {
-        Intent intent= new Intent(this,profile.class);
+        Intent intent= new Intent(this,Profile.class);
+        intent.putExtra("userMail",mail);
+        intent.putExtra("userPassword",password);
         startActivity(intent);
+
     }
 }

@@ -27,6 +27,12 @@ public class User
         phoneNumber=u.phoneNumber;
         bCountry=u.bCountry;
     }
+    public User(String email, String password)
+    {
+        this.email=email;
+        this.password=password;
+    }
+
 
 
     public String getuName() {
