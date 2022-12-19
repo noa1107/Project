@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Project</string>
+    <string-array name="city">
+        <item>
+            Ramat Gan
+        </item>
+        <item>
+            Givataim
+        </item>
+        <item>
+            Tel Aviv
+        </item>
+    </string-array>
+</resources>
