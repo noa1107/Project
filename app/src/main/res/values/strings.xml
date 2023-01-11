@@ -1,14 +1,23 @@
 <resources>
     <string name="app_name">Project</string>
-    <string-array name="city">
+    <string-array name="countries">
         <item>
-            Ramat Gan
+            Israel
         </item>
         <item>
-            Givataim
+            NY
         </item>
         <item>
-            Tel Aviv
+            LA
+        </item>
+        <item>
+            Spain
+        </item>
+        <item>
+            Italy
+        </item>
+        <item>
+            England
         </item>
     </string-array>
 </resources>

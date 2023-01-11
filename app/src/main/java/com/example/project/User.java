@@ -4,7 +4,6 @@ public class User
 {
     private String uName;
     private String email;
-    private String password;
     private String phoneNumber;
     private String bCountry;
 
@@ -14,7 +13,6 @@ public class User
     {
         this.uName = uName;
         this.email = email;
-        this.password = password;
         this.phoneNumber=PhoneNumber;
         this.bCountry=bCountry;
     }
@@ -23,14 +21,12 @@ public class User
     {
         uName=u.uName;
         email=u.email;
-        password=u.password;
         phoneNumber=u.phoneNumber;
         bCountry=u.bCountry;
     }
-    public User(String email, String password)
+    public User(String email)
     {
         this.email=email;
-        this.password=password;
     }
 
 
@@ -51,15 +47,17 @@ public class User
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
     public String getPhoneNumber() {return phoneNumber;}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber;}
+
+    public String getbCountry() {
+        return bCountry;
+    }
+
+    public void setbCountry(String bCountry) {
+        this.bCountry = bCountry;
+    }
 }

@@ -28,6 +28,12 @@ public class Register extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+
+        if(mAuth.getCurrentUser()!=null)
+        {
+            mail = mAuth.getCurrentUser().getEmail();
+            gotoGameActivity();
+        }
     }
     public void signIn(View view)
     {
@@ -45,6 +51,7 @@ public class Register extends AppCompatActivity
                 // check if success or fail
                 if(task.isSuccessful())
                 {
+
                    gotoGameActivity();
 
                 }
@@ -62,8 +69,8 @@ public class Register extends AppCompatActivity
     private void gotoGameActivity()
     {
         Intent intent= new Intent(this,Profile.class);
-        intent.putExtra("userMail",mail);
-        intent.putExtra("userPassword",password);
+        intent.putExtra("mail",mail);
+      //  intent.putExtra("userPassword",password);
         startActivity(intent);
 
     }
