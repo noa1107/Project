@@ -50,17 +50,14 @@ public class Profile extends AppCompatActivity implements AdapterView.OnItemSele
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
                 if(task.isSuccessful())
+                {
                     Toast.makeText(Profile.this, "success", Toast.LENGTH_SHORT).show();
+                    gotoHomeActivity();
+                }
                 else
                     Toast.makeText(Profile.this, "fail", Toast.LENGTH_SHORT).show();
-
-
             }
         });
-
-        // save to firebase
-      //  UsersFB uFB = new UsersFB();
-        //uFB.addUser(user);
     }
 
 
@@ -76,4 +73,11 @@ public class Profile extends AppCompatActivity implements AdapterView.OnItemSele
     {
         Toast.makeText(this, "Choose a country", Toast.LENGTH_SHORT).show();
     }
+    private void gotoHomeActivity()
+    {
+        Intent intent= new Intent(this,HomeActivity.class);
+        startActivity(intent);
+    }
+
+
 }

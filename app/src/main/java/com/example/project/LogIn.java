@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import org.checkerframework.common.returnsreceiver.qual.This;
 
-public class Register extends AppCompatActivity
+public class LogIn extends AppCompatActivity
 {
     private FirebaseAuth mAuth= FirebaseAuth.getInstance();
     User user=new User();
@@ -32,7 +32,7 @@ public class Register extends AppCompatActivity
         if(mAuth.getCurrentUser()!=null)
         {
             mail = mAuth.getCurrentUser().getEmail();
-            gotoGameActivity();
+            gotoProfileActivity();
         }
     }
     public void signIn(View view)
@@ -52,12 +52,12 @@ public class Register extends AppCompatActivity
                 if(task.isSuccessful())
                 {
 
-                   gotoGameActivity();
+                   gotoProfileActivity();
 
                 }
                 else
                 {
-                    Toast.makeText(Register.this,"failed, " + task.getException(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(LogIn.this,"failed, " + task.getException(),Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -66,11 +66,10 @@ public class Register extends AppCompatActivity
     }
 
 
-    private void gotoGameActivity()
+    private void gotoProfileActivity()
     {
         Intent intent= new Intent(this,Profile.class);
         intent.putExtra("mail",mail);
-      //  intent.putExtra("userPassword",password);
         startActivity(intent);
 
     }
