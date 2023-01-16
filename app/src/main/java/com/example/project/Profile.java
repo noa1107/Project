@@ -21,11 +21,14 @@ public class Profile extends AppCompatActivity implements AdapterView.OnItemSele
     private User user;
     private Spinner spC;
     private  String cCountry;
+    private FirebaseFirestore db=FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        if(db.collection("users")!=null)
+            gotoHomeActivity();
         this.user=new User();
         spC=findViewById(R.id.spinnerCountry);
         ArrayAdapter<CharSequence>adapter=ArrayAdapter.createFromResource(this,R.array.countries, android.R.layout.simple_spinner_item);
@@ -45,7 +48,6 @@ public class Profile extends AppCompatActivity implements AdapterView.OnItemSele
         String Uname=editTextUname.getText().toString();
         user.setuName(Uname);
         user.setbCountry(cCountry);
-        FirebaseFirestore db=FirebaseFirestore.getInstance();
         db.collection("users").add(user).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
