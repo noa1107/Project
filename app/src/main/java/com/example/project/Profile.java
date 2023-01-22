@@ -14,19 +14,25 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class Profile extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private User user;
     private Spinner spC;
     private  String cCountry;
-    private FirebaseFirestore db=FirebaseFirestore.getInstance();
+    private FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        db = FirebaseFirestore.getInstance();
+
+        checkIfProfileSet();
         if(db.collection("users")!=null)
             gotoHomeActivity();
         this.user=new User();
@@ -35,6 +41,31 @@ public class Profile extends AppCompatActivity implements AdapterView.OnItemSele
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spC.setAdapter(adapter);
         spC.setOnItemSelectedListener(this);
+    }
+
+    private void checkIfProfileSet() {
+        String mail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        db.collection("users").whereEqualTo("email",mail).limit(1).get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        // indicator for success
+                        if(task.isSuccessful())
+                        {
+                            // get result -> array of results
+                            // size can be 0 - no profile updated
+                            // stay here
+                            // size can be 1 -> read user data continue
+                            if( task.getResult().size() == 1)
+                            {
+                                Intent i = new Intent(Profile.this,HomeActivity.class);
+                                startActivity(i);
+                            }
+                        }
+                    }
+                });
+
+
     }
 
     public void updateProfile(View view)

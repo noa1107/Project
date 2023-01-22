@@ -28,7 +28,7 @@
             android:name=".notification"
             android:exported="false" />
         <activity
-            android:name=".Register"
+            android:name=".LogIn"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
