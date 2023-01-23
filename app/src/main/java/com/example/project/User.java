@@ -6,6 +6,9 @@ public class User
     private String email;
     private String phoneNumber;
     private String bCountry;
+    private String imgSrc;
+    private int friends;
+    private int cTracks;
 
     public User() { }
 
@@ -15,6 +18,9 @@ public class User
         this.email = email;
         this.phoneNumber=PhoneNumber;
         this.bCountry=bCountry;
+        this.friends=0;
+        this.cTracks=0;
+        this.imgSrc="choose your profile photo!";
     }
 
     public User(User u)
@@ -59,5 +65,29 @@ public class User
 
     public void setbCountry(String bCountry) {
         this.bCountry = bCountry;
+    }
+
+    public String getImgSrc() {
+        return imgSrc;
+    }
+
+    public void setImgSrc(String imgSrc) {
+        this.imgSrc = imgSrc;
+    }
+
+    public int getFriends() {
+        return friends;
+    }
+
+    public void setFriends(int friends) {
+        this.friends = friends;
+    }
+
+    public int getcTracks() {
+        return cTracks;
+    }
+
+    public void setcTracks() {
+        this.cTracks ++;
     }
 }

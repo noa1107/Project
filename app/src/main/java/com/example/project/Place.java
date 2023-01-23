@@ -42,4 +42,9 @@ public class Place
     public void setpRate(String pRate) {
         this.pRate = pRate;
     }
+    public double CalcDiss(Place a,Place b)
+    {
+        double diss=0;
+        return diss;
+    }
 }

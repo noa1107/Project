@@ -24,6 +24,7 @@ public class Profile extends AppCompatActivity implements AdapterView.OnItemSele
     private Spinner spC;
     private  String cCountry;
     private FirebaseFirestore db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

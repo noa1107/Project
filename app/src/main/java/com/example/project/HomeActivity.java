@@ -9,9 +9,12 @@ import android.os.Bundle;
 
 import com.example.project.databinding.ActivityHomeBinding;
 import com.example.project.databinding.ActivityMainBinding;
+import com.google.android.gms.location.FusedLocationProviderClient;
 
 public class HomeActivity extends AppCompatActivity {
     ActivityHomeBinding binding;
+
+    private FusedLocationProviderClient fusedLocationProviderClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,7 @@ public class HomeActivity extends AppCompatActivity {
             }
             return true;
         });
+
     }
     private void replaceFragment(Fragment fragment)
     {
