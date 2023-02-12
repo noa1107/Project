@@ -5,6 +5,7 @@ public class Place
     private String pCountry;
     private String pType;
     private String pRate;
+    private String pPpostalCode;
 
     public Place(String pCountry, String pType) {
         this.pCountry = pCountry;
