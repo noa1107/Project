@@ -25,7 +25,6 @@ public class CreateTrack extends AppCompatActivity {
         track=new Track();
         searchView=findViewById(R.id.searchView);
         listView=findViewById(R.id.listView);
-        places=track.getPlaces();
 
         arrayList=new ArrayList<>();
         arrayList.add("Israel");
