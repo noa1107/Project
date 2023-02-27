@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.project.databinding.ActivityHomeBinding;
-import com.example.project.databinding.ActivityMainBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
 
 public class HomeActivity extends AppCompatActivity {
