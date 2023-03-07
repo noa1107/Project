@@ -46,9 +46,9 @@ public class HomeActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.bottomNavigationView,fragment);
         fragmentTransaction.commit();
     }
-    public void gotoCreateTrackActivity(View view)
+    public void gotoFragmentMap(View view)
     {
-        Intent intent= new Intent(this,CreateTrack.class);
+        Intent intent= new Intent(this,MapFragment.class);
         startActivity(intent);
     }
 

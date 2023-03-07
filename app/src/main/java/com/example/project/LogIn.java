@@ -34,6 +34,8 @@ public class LogIn extends AppCompatActivity
             mail = mAuth.getCurrentUser().getEmail();
             gotoProfileActivity();
         }
+        else
+            gotoHomeActivity();
     }
     public void signIn(View view)
     {
@@ -71,6 +73,10 @@ public class LogIn extends AppCompatActivity
         Intent intent= new Intent(this,Profile.class);
         intent.putExtra("mail",mail);
         startActivity(intent);
-
+    }
+    public void gotoHomeActivity()
+    {
+        Intent intent= new Intent(this,HomeActivity.class);
+        startActivity(intent);
     }
 }
