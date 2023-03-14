@@ -11,6 +11,7 @@ import android.view.View;
 
 import com.example.project.databinding.ActivityHomeBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.libraries.places.api.Places;
 
 public class HomeActivity extends AppCompatActivity {
     ActivityHomeBinding binding;
@@ -37,6 +38,7 @@ public class HomeActivity extends AppCompatActivity {
             }
             return true;
         });
+        Places.initialize(getApplicationContext(), "AIzaSyAQRF6__c9joITY2_PAhhJIBGh0Rb9_v8Q");
 
     }
 

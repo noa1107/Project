@@ -44,8 +44,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
     }
 
-    public void getPGeo(String locationName)
-    {
+    public void getPGeo(String locationName) {
         try {
             addresses = geocoder.getFromLocationName(locationName, 1);
         } catch (Exception e) {
@@ -59,8 +58,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             LatLng markP = new LatLng(latitude, longitude);
         }
     }
-    public void markP(GoogleMap googleMap)
-    {
+
+    public void markP(GoogleMap googleMap) {
         LatLng markP = new LatLng(latitude, longitude);
         googleMap.addMarker(new MarkerOptions()
                 .position(markP)
@@ -68,17 +67,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(markP));
     }
 
-    public double calculatingDis()
-    {
+    public double calculatingDis(String p1, String p2) {
+        getPGeo(p1);
+        double lat1 = latitude;
+        double lng1 = longitude;
+        getPGeo(p2);
+        double lat2 = latitude;
+        double lng2 = longitude;
         double earthRadius = 3958.75;
 
-        double dLat = Math.toRadians(lat1-lat2);
-        double dLng = Math.toRadians(lng1-lng2);
-        double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+        double dLat = Math.toRadians(lat1 - lat2);
+        double dLng = Math.toRadians(lng1 - lng2);
+        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
                 Math.cos(Math.toRadians(lat2)) * Math.cos(Math.toRadians(lat1)) *
-                        Math.sin(dLng/2) * Math.sin(dLng/2);
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+                        Math.sin(dLng / 2) * Math.sin(dLng / 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         double dist = earthRadius * c;
+        return dist;
     }
 }
 
